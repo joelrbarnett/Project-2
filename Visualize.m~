@@ -1,12 +1,14 @@
+% Playing around 
+%
 clc
 clear
 load('mnist_all.mat');
-
-
+%Sets up T to hold the digits used to train
 T(1,:)=mean(train0); T(2,:)=mean(train1); T(3,:)= mean(train2); T(4,:)=mean(train3);
-T(5,:)=mean(train4); T(6,:)=mean(train5); T(7,:)=mean(train6); T(8,:)=mean(train7); T(9,:)=mean(train8); T(10,:)=mean(train9);
+T(5,:)=mean(train4); T(6,:)=mean(train5); T(7,:)=mean(train6); T(8,:)=mean(train7); 
+T(9,:)=mean(train8); T(10,:)=mean(train9);
 
-%plot the 10 digits, 
+%plot the 10 digits as is done in problem 7.17 in textbook 
 for i=1:10
 subplot(2,5,i);
 digitImage = reshape(T(i,:),28,28);
@@ -15,9 +17,10 @@ colormap(gray(256)), axis square tight off;
 end
 
 %Here, we try a couple different values from the test{_} vector to see if
-%our testDigit function accurately determines the digit d.
+%our testDigit function accurately determines the digit d. Change the
+%test_(j,:) value to be any digit 0-9.
 for j=1:12
-    d=double(test1(j,:));
+    d=double(test0(j,:));
     testDigit(d,T)
 end
 
