@@ -1,9 +1,7 @@
 % Playing around with the mnist database. This file prints the average
 % training digit image, and also uses a crude method of comparing vector
 % norms to see try to determine a digit (done in function testDigit).
-%
-clc
-clear
+
 load('mnist_all.mat');
 %Sets up T to hold the digits used to train
 T(1,:)=mean(train0); T(2,:)=mean(train1); T(3,:)= mean(train2); T(4,:)=mean(train3);
@@ -21,10 +19,12 @@ end
 %Here, we try a couple different values from the test{_} vector to see if
 %our testDigit function accurately determines the digit d. Change the
 %test_(j,:) value to be any digit 0-9.
+digits=zeros(1,12);
 for j=1:12
     d=double(test0(j,:));
-    testDigit(d,T)
+    digits(1,j)=testDigit(d,T);
 end
+digits
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
